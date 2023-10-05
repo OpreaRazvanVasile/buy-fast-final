@@ -1,0 +1,62 @@
+.checkout-item-container {
+    width: 100%;
+    display: flex;
+    min-height: 100px;
+    border-bottom: 1px solid darkgrey;
+    padding: 15px 0;
+    font-size: 22px;
+    align-items: center;
+  
+    .image-container {
+      width: 23%;
+      padding-right: 20px;
+  
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .name,
+    .quantity,
+    .price ,.total-price{
+      width: 23vh;
+      
+    }
+    .total-price{
+        width: 26.5vh;
+        color:rgb(119, 119, 119) ;
+        font-weight:549 ;
+    }
+  
+    .quantity {
+      display: flex;
+      flex-direction:row;
+   
+      .arrow {
+        display:flex ;
+        cursor: pointer;
+        transition:all;
+        &:hover{
+            color:rgb(135, 133, 133) ;
+           
+
+        }
+     
+      }
+  
+      .value {
+        margin: 0 10px;
+      }
+    }
+  
+    .remove-button {
+      padding-left: 12px;
+      cursor: pointer;
+      &:hover{
+        color:rgb(101, 101, 101) ;
+       
+
+    }
+    }
+  }
+  
