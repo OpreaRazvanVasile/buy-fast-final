@@ -1,3 +1,5 @@
+$breakpoint-mobile:750px;
+$breakpoint-tablet:1020px;
 .sign-in-container {
     display: flex;
     flex-direction: column;
@@ -6,6 +8,25 @@
     h2{
       margin: 10px 0;
     }
+    @media screen and (width:1024px) {
+      margin-top:1rem
+       
+   }
+    @media screen and (max-width:$breakpoint-tablet) {
+       margin:2rem auto ;
+       width:80% ;
+     
+      
+  }
+    @media screen and (max-width:$breakpoint-mobile) {
+      width:100% ;
+      margin-top:2rem ;
+      @media screen and (width:360px) {
+        width:100% ;
+        
+      }
+      
+    }
   }
 
   .btn-container{
@@ -13,6 +34,28 @@
    justify-content:space-between ;
    gap:15px;
    margin-left:-5vh;
+   @media screen and (width:1024px) {
+   gap:3px ;
+    position:relative ;
+    left:1rem ;
+    
+}
+   @media screen and (max-width:$breakpoint-tablet) {
+    display:flex ;
+    width:100% ;
+    flex-direction:column ;
+    margin:0 auto ;
+    gap:.5px ;
+    
+}
+   
+   @media screen and (max-width:$breakpoint-mobile) {
+    display:flex ;
+    flex-direction:column;
+    gap:1px;
+    margin:0 auto ;
+    
+  }
 
     
   }

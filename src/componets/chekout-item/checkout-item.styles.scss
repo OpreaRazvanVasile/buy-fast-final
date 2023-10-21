@@ -1,3 +1,5 @@
+$breakpoint-mobile:750px;
+$breakpoint-tablet: 1020px;
 .checkout-item-container {
     width: 100%;
     display: flex;
@@ -58,5 +60,36 @@
 
     }
     }
+    @media screen and (max-width:$breakpoint-mobile) {
+      width:125% ;
+      .name,
+      .quantity,
+      .price ,.total-price{
+        width: 10vh;
+        font-size:12px ;
+        
+      }
+      .remove-button{
+        position:relative;
+    
+        left:-1.5rem;
+      
+      }
+    @media screen and (width:540px) {
+      margin-left:1.5rem ;
+      
+    }
+    @media screen and (width:280px) {
+      .name,
+      .quantity,
+      .price ,.total-price{
+        width: 6.63vh;
+        font-size:10px ;
+        
+      }
+      
+    }
+    }
+
   }
   

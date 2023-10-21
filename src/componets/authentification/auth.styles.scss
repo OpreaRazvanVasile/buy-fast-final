@@ -1,6 +1,29 @@
+$breakpoint-mobile:750px;
+$breakpoint-tablet: 1000px;
 .auth-container{
     display: flex;
     justify-content:space-between ;
     width:980px;
     margin:30px auto ;
+    @media screen and (width:1024px) {
+        margin:-1rem ;
+        
+    }
+    @media screen and (max-width:$breakpoint-tablet) {
+        display:flex ;
+        flex-direction: column;
+        width:100%;
+        gap:80px
+        
+      
+        
+        
+    }
+    @media screen and (max-width:$breakpoint-mobile) {
+        display:flex ;
+        flex-direction: column;
+        width:auto ;
+      
+        
+    }
 }

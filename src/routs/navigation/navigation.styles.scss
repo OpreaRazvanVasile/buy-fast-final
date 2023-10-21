@@ -1,3 +1,7 @@
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1200px;
+
 .navigation {
     height: 70px;
     width: 100%;
@@ -23,4 +27,54 @@
             cursor: pointer;
         }
     }
+    @media screen and (max-width: $breakpoint-mobile) {
+       
+        .nav-links-container {
+          width: 100%;
+          height: auto;
+          padding-top:3vh;
+        }
+
+        @media screen and (max-width:375px) {
+            .nav-link{
+                font-size:14.3px ;
+            }
+            
+         }
+         @media screen and (width:360px) {
+           width:100% ;
+           
+         } 
+         @media screen and (width:280px) {
+            
+                 width:125% ;
+                
+                 margin-left:-0.46rem ;
+                
+                .nav-links-container{
+                    width:50px ;
+                   margin-left:-1rem ;
+                }
+                .logo-container{
+                    margin-left:-2rem ;
+                }
+                .nav-link{
+                    font-size:2vh ;
+                    padding: auto;
+                }
+            
+            
+            
+          }         
+      }
+
+    @media screen and (max-width:$breakpoint-tablet)  {
+        .nav-links-container {
+            width:auto ;
+        } 
+        
+    }
+
+   
 }
+

@@ -1,6 +1,7 @@
 
 import ProductItem from "../product-item/product-item.component"
 import './category-preview.styles.scss'
+import { Link } from "react-router-dom"
 
 const CategoryPreview=({title,value})=>{
     const lastFourElements=function(items){
@@ -17,7 +18,9 @@ const CategoryPreview=({title,value})=>{
 
     return (
         <div className="category-preview-container" key={title}>
-                  <h2 className="title"><span>{title.toLocaleUpperCase()}</span></h2>
+                  <h2 className="title"><span>
+                    <Link to={`${title}`}> {title.toLocaleUpperCase()}</Link>
+                   </span></h2>
            
                  <div className='preview'>
                 {    
