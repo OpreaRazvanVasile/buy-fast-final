@@ -1,1 +1,1 @@
-export const selectorCategoires=state=>state.categoires_root.categories
+export const selectorCategoires=state=>state.categoires.categories

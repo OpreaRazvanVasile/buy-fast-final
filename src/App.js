@@ -11,12 +11,12 @@ import { authStateChangedListener } from './utils/fierbase/fierbase.utils';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser} from './store/user/user.actions';
 import { CATEGORIES_TYPES } from './store/categories/categories.types';
-
+import { getDocumentFormDB } from './utils/fierbase/fierbase.utils';
 
 
 const App=()=> {
   const dispatch=useDispatch()
-console.log(CATEGORIES_TYPES)
+ 
 
   useEffect(()=>{
     const unsubsribe=authStateChangedListener((users)=>{

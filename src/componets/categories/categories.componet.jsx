@@ -1,15 +1,11 @@
 
 import CategoryPreview from '../../componets/category-preview/category-preview.component'
 import { Fragment } from 'react'
-import { useSelector } from 'react-redux'
-import { selectorCategoires } from '../../store/categories/categories.selector'
-
-const CategoriesComponent=()=>{
 
 
-   const categories=useSelector(selectorCategoires)
-   console.log(categories)
-  
+const CategoriesComponent=({categories})=>{
+
+    
    const categoriesEntries=Object.entries(categories)
 
       
