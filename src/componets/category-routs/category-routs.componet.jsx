@@ -4,14 +4,15 @@ import { useParams } from "react-router"
 
 import { useEffect,useContext,useState } from "react"
 
-import { CategoriesContext } from "../../contexts/categories-context/categories.contex"
+import { useSelector } from 'react-redux'
+import { selectorCategoires } from '../../store/categories/categories.selector.js'
 import ProductItem from "../product-item/product-item.component"
 import { hasPointerEvents } from '@testing-library/user-event/dist/utils'
 
 
 const CategoryRouts=()=>{
     const {category}=useParams()
-    const {categories}=useContext(CategoriesContext)
+    const categories=useSelector(selectorCategoires)
     const [products,setProducts]=useState([])
    
     /*

@@ -6,18 +6,17 @@ import Navigation from './routs/navigation/navigation.component';
 import Auth from './componets/authentification/auth.component';
 import Shop from './routs/shop/shop.component';
 import Checkout from './routs/checkout/checkout.component';
-
 import { useEffect } from 'react';
 import { authStateChangedListener } from './utils/fierbase/fierbase.utils';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser} from './store/user/user.actions';
-
+import { CATEGORIES_TYPES } from './store/categories/categories.types';
 
 
 
 const App=()=> {
   const dispatch=useDispatch()
-
+console.log(CATEGORIES_TYPES)
 
   useEffect(()=>{
     const unsubsribe=authStateChangedListener((users)=>{
