@@ -24,7 +24,7 @@ const SignUp=()=>{
     const {displayName,email,password,confirmPassword}=formInputData
 
 
-    const changeHandler=function(event){
+      const changeHandler=function(event){
         event.preventDefault()
        const{name,value}=event.target
        setFormInputData(()=>{return{...formInputData,[name]:value}})

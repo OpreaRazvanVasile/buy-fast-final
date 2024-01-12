@@ -1,7 +1,13 @@
 import styled from "styled-components";
+import { BaseButton } from "../../componets/button/button.styles";
 const breakpointMobile='750px';
-const breakpointTablet='1020px';
+const breakpointTablet='1024px';
 
+// export const OrderBtn=styled(BaseButton)`
+// margin:0 auto;
+// font-size:14px;
+
+// `
 
 export const CheckoutHeader=styled.div`
 width: 102%;
@@ -27,6 +33,8 @@ display:flex;
 margin-top: 30px;
 margin-left:auto;
 font-size: 27px;
+
+
 `
 export const CheckoutContainer=styled.div`
 width: 55%;
@@ -36,23 +44,34 @@ display: flex;
 flex-direction: column;
 align-items: center;
 margin: 50px auto 0;
-@media screen and (width:1024px) {
+@media screen and (width:1024px){
   width:70% ;
+
 }
+
+
 @media screen and (max-width:${breakpointTablet}) {
-  width:130% ;
+  width:100% ;
+  
+  
 }
+
 @media screen and (max-width:${breakpointMobile}) {
   width:100%;
   display: flex;
   flex-direction:column;
   align-items:center ;
+
+
   ${CheckoutHeader}{
     width:121% ;
+
     gap:0.5rem;
-     }
-  ${HeaderBlock}{
-    width:27% ;
+    
+    
+ 
+    ${HeaderBlock}{
+      width:27% ;
      
       span{
         font-size:0.6rem ;
@@ -60,22 +79,27 @@ margin: 50px auto 0;
         margin-left:-1rem;
 
       }
+     
+    }
   }
   ${SpanTotal}{
     font-size: 1.3rem;
-  }  
-
+  }
 }
 @media screen and (width:280px) {
   width:110% ;
   margin-left: -.5rem;
   ${HeaderBlock}{
+   
+   
+   
     span{
       font-size:0.4rem ;
     
     }
-
+   
   }
+  
 }
 @media screen and (width:540px) {
   width:80% ;
@@ -87,5 +111,9 @@ margin: 50px auto 0;
  
   
 }
+
+
+}
+ 
 `
 

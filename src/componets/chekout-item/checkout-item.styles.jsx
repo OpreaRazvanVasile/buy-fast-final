@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { breakpointMobile } from "../authentification/auth.styles";
+
 const breakepointTablet='1020px';
 
 export const ImgContainer=styled.div`
@@ -64,7 +64,10 @@ border-bottom: 1px solid darkgrey;
 padding: 15px 0;
 font-size: 22px;
 align-items: center;
-@media screen and (max-width:${breakpointMobile}) {
+
+
+
+@media screen and (max-width:750px) {
   width:125% ;
   ${SpanName} ,${SpanPrice},${QuantityContainer},${SpantTotalPrice}{
     width: 10vh;
@@ -91,7 +94,8 @@ align-items: center;
     
    }
    
-
+  
+  
 
 `
    

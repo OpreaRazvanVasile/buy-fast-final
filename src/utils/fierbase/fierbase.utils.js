@@ -161,13 +161,13 @@ return onAuthStateChanged(auth,callback)
 }
 
 
-export const addCollectionToDB=async(collectionKey,objectToAdd,field)=>{
+export const addCollectionToDB=async(collectionKey,objectToAdd)=>{
   const collectionRef=collection(db,collectionKey)
   const batch=writeBatch(db)// create a batch in db
   objectToAdd.forEach(obj=>{
     //{title:'mens',items:[{id:332..,imgUrl:..}]}
-   if(typeof field==='string'){
-     const title=obj[field].toLowerCase() 
+ 
+     const title=obj.title.toLowerCase() 
      //Categories=>mens
      const docRef=doc(collectionRef,title)
      
@@ -176,11 +176,13 @@ export const addCollectionToDB=async(collectionKey,objectToAdd,field)=>{
      //set a batch in categories colection when the name of the document its
      //the title or a field  and obj its the obj  {title:'mens',items:[{id:332..,imgUrl:..}]}
 
-   } 
-  })
-  await  batch.commit() 
+    
+  
+})
+await  batch.commit() 
 
 }
+
 export const getDocumentFormDB=async(collectionKey)=>{
   const collectionRef=collection(db,collectionKey)
   const q=query(collectionRef)

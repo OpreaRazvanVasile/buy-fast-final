@@ -6,7 +6,7 @@ const mainColor='black'
 const shrinkLabel=css`
 top: -14px;
 font-size: 12px;
-color: $main-color;
+color: ${mainColor};
 `
 export const Label=styled.label`
 color: ${subColor};

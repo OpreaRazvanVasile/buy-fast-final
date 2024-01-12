@@ -1,6 +1,6 @@
 
  import { useEffect,useState,useContext} from "react"
-  import { UserContext } from "../../contexts/user-context/user.context"
+//   import { UserContext } from "../../contexts/user-context/user.context"
 
 
 import InputForm from "../input-form/input-form.component"
@@ -10,6 +10,8 @@ import { createUsersDocument,auth, singInWithGoogle,redirectSingIn,singInWithEma
     from "../../utils/fierbase/fierbase.utils"
 import { getRedirectResult } from "firebase/auth"    
 import {SignInContainer,BtnContainer}from'./sign-in.styles.jsx'
+import { useSelector } from "react-redux"
+import { selectCurrentUser } from "../../store/user/user.selector.js"
 
 
 
@@ -26,7 +28,9 @@ const defaultInputData={
 
 const SignIn=()=>{
     const[formInputData,setFormInputData]=useState(defaultInputData)
-     const {currnetUser}=useContext(UserContext)
+
+     const currnetUser=useSelector(selectCurrentUser)
+    
     
     const {email,password}=formInputData
         useEffect(()=>{

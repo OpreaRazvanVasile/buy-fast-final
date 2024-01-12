@@ -1,13 +1,20 @@
 import { validatePassword } from 'firebase/auth'
 import {Group,Input,Label} from'./input-form.styles.jsx'
 
-const InputForm=({label,...otherProps})=>
 
+const InputForm=({label,value,...otherProps})=>{
+   
+
+
+return(
      <Group>
-         <Input {...otherProps}></Input>
        
-        <Label shrink={otherProps.value.length>0?true:undefined}>{label}</Label>
+         <Input value={value} {...otherProps}></Input>
+        <Label shrink={value.length>0?true:undefined}>{label}</Label>
          </Group>
+)
+
+}
 
 
 

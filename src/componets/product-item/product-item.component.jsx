@@ -5,11 +5,14 @@ import { CartContex } from "../../contexts/cart-context/cart-context"
 
 const ProductItem=({product})=>{
   const {name,imageUrl,price}=product
-     const{cartItems,setAddToCart}=useContext(CartContex)
+     const{cartItems,setAddToCart,setIsCartOpen}=useContext(CartContex)
 
 
    
-     const addProduct=()=> setAddToCart(cartItems,product)
+     const addProduct=()=>{
+        
+         setAddToCart(cartItems,product)
+     }
              
             
             

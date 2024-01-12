@@ -2,12 +2,14 @@
 import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
 import { ReactComponent as CrownLogo } from "../../assets/crown-logo/crown.svg";
-import { UserContext } from "../../contexts/user-context/user.context";
+
 import {useContext, Fragment, useState } from "react";
 import { signOutUser } from "../../utils/fierbase/fierbase.utils";
 import IconCart from "../../componets/cart-icon/cart-icon.component";
 import CartDropdown from "../../componets/cart-dropdown/cart-dropdown.component";
 import { CartContex } from "../../contexts/cart-context/cart-context";
+import { useSelector } from "react-redux";
+import { selectCurrentUser,slectIsMouseOverEl } from "../../store/user/user.selector";
 
 
 // import './navigation.styles.scss'
@@ -15,9 +17,13 @@ import { NavContainer,LogoConatier,NavLinksContainer,NavLink} from "./navigation
 
 
 const Navigation = () => {
-     
-    const{currnetUser,isMouseOverEl,setIsMouseOverEl}=useContext(UserContext)
-    const {isCartOpen,setIsCartOpen}=useContext(CartContex)
+
+
+    const currnetUser =useSelector(selectCurrentUser)
+    const[isMouseOverEl,setIsMouseOverEl] =useState(false)
+   
+   
+     const {isCartOpen,setIsCartOpen}=useContext(CartContex)
     const[target,setTarget]=useState('')
 
 
