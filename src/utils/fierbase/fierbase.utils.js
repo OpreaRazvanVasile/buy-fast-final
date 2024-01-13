@@ -190,9 +190,11 @@ export const getDocumentFormDB=async(collectionKey)=>{
   
   
  const data= querySnapshot.docs.map(doc=>doc.data())
+
  const documetObj={}
  if(collectionKey!=='directory'){
   data.forEach(doc=>{
+   
     const title=doc['title'].toLowerCase()
     const items=doc['items']
     documetObj[title]=items

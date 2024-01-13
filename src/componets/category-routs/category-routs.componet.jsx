@@ -2,7 +2,7 @@
 import {CategoriesRouts,CategoriesTitle} from'./category-routs.styles.jsx'
 import { useParams } from "react-router"
 
-import { useEffect,useContext,useState } from "react"
+import { useEffect,useState } from "react"
 
 import { useSelector } from 'react-redux'
 import { selectorCategoires } from '../../store/categories/categories.selector.js'
@@ -11,9 +11,16 @@ import { hasPointerEvents } from '@testing-library/user-event/dist/utils'
 
 
 const CategoryRouts=()=>{
+    console.log(`render/re-render categoryRouts component `)
     const {category}=useParams()
     const categories=useSelector(selectorCategoires)
+    console.log(categories)
+    //{hats:[],snekers:[]}
+
+    console.log(category)
+    //shop/hats->category title 
     const [products,setProducts]=useState([])
+    //[]
    
     /*
      []
@@ -29,15 +36,19 @@ const CategoryRouts=()=>{
    
 
     useEffect(()=>{
+
       
-    setProducts(categories[category])   
+    setProducts(categories[category]) 
+    //categories['hats']
+    //[...hatsArray]  
 
     },[category,categories])
 
 
     return(  
         <>
-            <CategoriesTitle>{category.toLocaleUpperCase()}</CategoriesTitle>
+            <CategoriesTitle>{products?category.toLocaleUpperCase():''}</CategoriesTitle>
+            {/* {//HATS} */}
             <br></br>
         <CategoriesRouts>
            {

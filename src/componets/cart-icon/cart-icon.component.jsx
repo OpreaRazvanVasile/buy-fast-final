@@ -4,7 +4,7 @@ import { CartContex } from '../../contexts/cart-context/cart-context'
 
 const IconCart=({setCart})=>{
     const {totalQuantity}=useContext(CartContex)
-    console.log(totalQuantity)
+
    
 
     return(

@@ -6,12 +6,10 @@ import { useDispatch } from "react-redux";
 import CategoriesComponent from "../../componets/categories/categories.componet";
 import Category from "../../componets/category-routs/category-routs.componet";
 import { getDocumentFormDB } from "../../utils/fierbase/fierbase.utils";
-import { useSelector } from "react-redux";
-import { selectorCategoires } from "../../store/categories/categories.selector";
-const Shop=()=>{
-    const dispatch=useDispatch()
-    const categories=useSelector(selectorCategoires)
 
+const Shop=()=>{
+   
+     const dispatch=useDispatch()
 
     useEffect(()=>{
         const getDocFromDb=async()=>{
@@ -30,7 +28,7 @@ const Shop=()=>{
 
 return(
     <Routes>
-        <Route index element={<CategoriesComponent categories={categories}/>}></Route>
+        <Route index element={<CategoriesComponent/>}></Route>
       
         <Route path=":category" element={<Category/>}></Route>
     </Routes>
