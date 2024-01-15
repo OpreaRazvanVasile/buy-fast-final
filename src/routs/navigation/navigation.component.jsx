@@ -7,30 +7,30 @@ import {useContext, Fragment, useState } from "react";
 import { signOutUser } from "../../utils/fierbase/fierbase.utils";
 import IconCart from "../../componets/cart-icon/cart-icon.component";
 import CartDropdown from "../../componets/cart-dropdown/cart-dropdown.component";
-import { CartContex } from "../../contexts/cart-context/cart-context";
-import { useSelector } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser,slectIsMouseOverEl } from "../../store/user/user.selector";
 
 
 // import './navigation.styles.scss'
 import { NavContainer,LogoConatier,NavLinksContainer,NavLink} from "./navigation.styles";
-
+import { isCartOpenSelector } from "../../store/cart/cart.selector";
+import { setIsCartOpen } from "../../store/cart/cart.actions";
 
 const Navigation = () => {
 
-
+    const dispatch=useDispatch()
     const currnetUser =useSelector(selectCurrentUser)
     const[isMouseOverEl,setIsMouseOverEl] =useState(false)
    
-   
-     const {isCartOpen,setIsCartOpen}=useContext(CartContex)
+     const isCartOpen=useSelector(isCartOpenSelector)
     const[target,setTarget]=useState('')
 
 
       
     const setCart=()=>
-        (!isCartOpen)?setIsCartOpen(true):
-         setIsCartOpen(false)
+        (!isCartOpen)?dispatch(setIsCartOpen(true)):
+         dispatch(setIsCartOpen(false))
 
          const styleOnMouseOver=(text,color,font)=>{
                 if(target){

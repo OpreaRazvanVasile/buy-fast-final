@@ -9,7 +9,7 @@ const CategoriesComponent=()=>{
 
   const categories=useSelector(selectorCategoires)
 
-    
+    console.log(categories)
    const categoriesEntries=Object.entries(categories)
 
       

@@ -10,8 +10,6 @@ import { useEffect } from 'react';
 import { authStateChangedListener } from './utils/fierbase/fierbase.utils';
 import { useDispatch } from 'react-redux';
 import { setCurrentUser} from './store/user/user.actions';
-import { CATEGORIES_TYPES } from './store/categories/categories.types';
-import { getDocumentFormDB } from './utils/fierbase/fierbase.utils';
 
 
 const App=()=> {
@@ -23,6 +21,7 @@ const App=()=> {
        
         dispatch(setCurrentUser(users))
 
+
        
     })
     
@@ -30,6 +29,8 @@ const App=()=> {
                 
 
  },[dispatch])
+
+
   return (
     < Routes >
       <Route path='/' element={<Navigation />}>

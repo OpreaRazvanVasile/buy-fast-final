@@ -10,7 +10,8 @@ import { getDocumentFormDB } from "../../utils/fierbase/fierbase.utils";
 const Shop=()=>{
    
      const dispatch=useDispatch()
-
+     console.log(`Render Shop Page`)
+     
     useEffect(()=>{
         const getDocFromDb=async()=>{
          const doc= await getDocumentFormDB('categories')

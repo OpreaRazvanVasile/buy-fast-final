@@ -1,9 +1,13 @@
 import { CartIconConatiner,ShoppingIconDiv,ItemCount} from './cart-icon.styles'
-import { useContext} from 'react'
-import { CartContex } from '../../contexts/cart-context/cart-context'
+import { cartTotalQunatitySelector } from '../../store/cart/cart.selector'
+import { useDispatch, useSelector } from 'react-redux'
+import { setIsCartOpen } from '../../store/cart/cart.actions'
 
 const IconCart=({setCart})=>{
-    const {totalQuantity}=useContext(CartContex)
+   
+    const totalQuantity=useSelector(cartTotalQunatitySelector)
+
+    
 
    
 

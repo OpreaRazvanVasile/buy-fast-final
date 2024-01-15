@@ -1,24 +1,37 @@
 import Button from '../button/button.component'
 import {ProductCarTConatiner,SpanName,SpanPrice,ProductFooter} from'./product-item.styles.jsx'
-import { useContext } from "react"
-import { CartContex } from "../../contexts/cart-context/cart-context"
+import { useDispatch } from 'react-redux'
+
+import { useSelector } from 'react-redux'
+import { cartItemsSelector,cartTotalPriceSelector,cartTotalQunatitySelector} from '../../store/cart/cart.selector.js'
+import { setAddToCart ,setTotalQuantity,setCartTotal} from '../../store/cart/cart.actions.js'
+import { useEffect } from 'react'
+
+
+
+
+
 
 const ProductItem=({product})=>{
   const {name,imageUrl,price}=product
-     const{cartItems,setAddToCart}=useContext(CartContex)
+     
 
-
-   
-     const addProduct=()=>{
-        
-         setAddToCart(cartItems,product)
-     }
+    const dispatch=useDispatch()
+    const cartItems=useSelector(cartItemsSelector)
+    const totalQuantity=useSelector(cartTotalQunatitySelector)
+    const totalPrice=useSelector(cartTotalPriceSelector)
+    
+  
+    useEffect(()=>dispatch(setCartTotal(totalPrice)),[totalPrice,cartItems])
+    useEffect(()=>dispatch(setTotalQuantity(totalQuantity)),[totalQuantity,cartItems])
+     
+    
+      const addProduct=()=>{
+       
+          dispatch(setAddToCart(cartItems,product))
+      }
+    
              
-            
-            
-            
-        
-         
      
     return (
         <ProductCarTConatiner>

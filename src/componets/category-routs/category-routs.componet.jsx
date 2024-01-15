@@ -11,13 +11,13 @@ import { hasPointerEvents } from '@testing-library/user-event/dist/utils'
 
 
 const CategoryRouts=()=>{
-    console.log(`render/re-render categoryRouts component `)
+    
     const {category}=useParams()
     const categories=useSelector(selectorCategoires)
-    console.log(categories)
+
     //{hats:[],snekers:[]}
 
-    console.log(category)
+
     //shop/hats->category title 
     const [products,setProducts]=useState([])
     //[]
@@ -43,7 +43,6 @@ const CategoryRouts=()=>{
     //[...hatsArray]  
 
     },[category,categories])
-
 
     return(  
         <>

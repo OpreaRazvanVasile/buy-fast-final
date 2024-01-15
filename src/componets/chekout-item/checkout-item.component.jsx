@@ -8,18 +8,20 @@ import {CheckoutItemContainer,
   SpanPrice,
   SpantTotalPrice,
 RemoveButton} from "./checkout-item.styles.jsx"
-import { CartContex } from '../../contexts/cart-context/cart-context'
-import { useContext } from 'react'
 
+import { useDispatch, useSelector } from "react-redux"
+import { cartItemsSelector } from "../../store/cart/cart.selector.js"
+import { setAddToCart,setRemoveCartItem,setRemoveItemOnCLick } from "../../store/cart/cart.actions.js"
 
 
 const CheckoutItem=({item})=>{
-    const{id,name,imageUrl,quantity,price}=item
-    const {cartItems,setAddToCart,setRemoveCartItem,setRemoveItemOnCLick}=useContext(CartContex)
 
-    const incrementHandler=()=>setAddToCart(cartItems,item)
-    const decrementHandler=()=>setRemoveCartItem(cartItems,item)
-    const removeItemHandler=()=>setRemoveItemOnCLick(cartItems,item)
+   const dispatch=useDispatch()
+    const{id,name,imageUrl,quantity,price}=item
+     const cartItems=useSelector(cartItemsSelector)
+    const incrementHandler=()=>dispatch(setAddToCart(cartItems,item))
+    const decrementHandler=()=>dispatch(setRemoveCartItem(cartItems,item))
+    const removeItemHandler=()=>dispatch(setRemoveItemOnCLick(cartItems,item))
     return (
     <CheckoutItemContainer key={id}>
          <ImgContainer>
