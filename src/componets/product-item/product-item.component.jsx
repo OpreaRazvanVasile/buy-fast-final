@@ -22,8 +22,14 @@ const ProductItem=({product})=>{
     const totalPrice=useSelector(cartTotalPriceSelector)
     
   
-    useEffect(()=>dispatch(setCartTotal(totalPrice)),[totalPrice,cartItems])
-    useEffect(()=>dispatch(setTotalQuantity(totalQuantity)),[totalQuantity,cartItems])
+    useEffect(()=>{
+      dispatch(setCartTotal(totalPrice))
+    },[totalPrice]) 
+
+    useEffect(()=>{
+      dispatch(setTotalQuantity(totalQuantity))
+
+    },[totalQuantity])
      
     
       const addProduct=()=>{

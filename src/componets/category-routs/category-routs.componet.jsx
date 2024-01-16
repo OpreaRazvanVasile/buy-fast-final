@@ -8,13 +8,15 @@ import { useSelector } from 'react-redux'
 import { selectorCategoires } from '../../store/categories/categories.selector.js'
 import ProductItem from "../product-item/product-item.component"
 import { hasPointerEvents } from '@testing-library/user-event/dist/utils'
+import { selectorIsLoading } from '../../store/categories/categories.selector.js'
 
+import Spinner from '../spinner/spinner.componet.jsx'
 
 const CategoryRouts=()=>{
     
     const {category}=useParams()
     const categories=useSelector(selectorCategoires)
-
+    const isLoading=useSelector(selectorIsLoading)
     //{hats:[],snekers:[]}
 
 
@@ -43,9 +45,17 @@ const CategoryRouts=()=>{
     //[...hatsArray]  
 
     },[category,categories])
-
-    return(  
+    
+    if(isLoading){
+        return (
         <>
+            <Spinner/>
+        </>
+    )
+    }
+    else {
+        return (
+            <>
             <CategoriesTitle>{products?category.toLocaleUpperCase():''}</CategoriesTitle>
             {/* {//HATS} */}
             <br></br>
@@ -58,8 +68,8 @@ const CategoryRouts=()=>{
 
         </CategoriesRouts>
         </>
-    )
-    
+        )
+    }
 
    
 }

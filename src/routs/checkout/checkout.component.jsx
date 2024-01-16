@@ -11,8 +11,17 @@ const Checkout=()=>{
      const cartItems=useSelector(cartItemsSelector)
      const totalPrice=useSelector(cartTotalPriceSelector)
      const totalQuantity=useSelector(cartTotalQunatitySelector)
-     useEffect(()=>dispatch(setCartTotal(totalPrice)),[totalPrice])
-     useEffect(()=>dispatch(setTotalQuantity(totalQuantity)),[totalQuantity])
+
+     useEffect(()=>{
+
+         dispatch(setCartTotal(totalPrice))
+   
+     },[totalPrice])
+
+     useEffect(()=>{
+
+         dispatch(setTotalQuantity(totalQuantity))
+     },[totalQuantity])
 
     return (
         <>

@@ -9,3 +9,8 @@ export const selectorCategoires=createSelector(
   (categoriesSlice)=>categoriesSlice.categories
 ) 
 
+
+export const selectorIsLoading=createSelector(
+  [selectorCategoiresReducer],
+  (categoriesSlice)=>categoriesSlice.isLoading
+)
