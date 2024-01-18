@@ -6,13 +6,11 @@ import { selectorCategoires} from '../../store/categories/categories.selector'
 import { useSelector } from 'react-redux'
 import { selectorIsLoading } from '../../store/categories/categories.selector'
 import Spinner from '../spinner/spinner.componet'
+import { selectorError } from '../../store/categories/categories.selector'
 const CategoriesComponent=()=>{
 
   const isLoading=useSelector(selectorIsLoading)
   const categories=useSelector(selectorCategoires)
-
-
-
 
    const categoriesEntries=Object.entries(categories)
 

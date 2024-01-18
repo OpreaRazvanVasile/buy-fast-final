@@ -9,8 +9,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { thunk } from "redux-thunk";
 
 
-
-    
 let middleware;
 
 const persistConfig={
@@ -19,8 +17,6 @@ const persistConfig={
     whitelist:['cart']
 }
 
-
-
 if(process.env.NODE_ENV==='development')middleware=[logger,thunk]
 else  middleware=[thunk]
 
@@ -28,4 +24,5 @@ const composedEnhancers=composeWithDevTools(applyMiddleware(...middleware))
 const persistRootReducer=persistReducer(persistConfig,rootReducer)
 
 export const store=createStore(persistRootReducer,undefined,composedEnhancers)
+
 export const persitor=persistStore(store);

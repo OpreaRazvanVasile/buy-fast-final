@@ -8,7 +8,7 @@ import { getDocumentFormDB } from "../../utils/fierbase/fierbase.utils";
 
 }
 
- export const fetchCategoriesFaild=()=>createAction(CATEGORIES_TYPES.FETCH_CATEGORIES_FAILD)
+ export const fetchCategoriesFaild=(error)=>createAction(CATEGORIES_TYPES.FETCH_CATEGORIES_FAILD,error)
  
 export const fetchCategoiresSuccess=(categoriesArray)=>
 createAction(CATEGORIES_TYPES.FETCH_CATEGORIES_SUCCESS,categoriesArray)
@@ -22,7 +22,8 @@ export const fetchCategoiresAsync=async(dispatch)=>{
 
   }
   catch(error){
-   dispatch(fetchCategoriesFaild(error))
+  
+  return dispatch(fetchCategoriesFaild(error))
    
   }
 }
