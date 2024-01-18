@@ -17,7 +17,8 @@ export const fetchCategoiresAsync=async(dispatch)=>{
 
   dispatch(fetchCategoriesStart())
   try{
-    const categoriesArray= await getDocumentFormDB('categories')
+    const categoriesArray=await getDocumentFormDB('categories')
+    
    dispatch(fetchCategoiresSuccess(categoriesArray)) 
 
   }

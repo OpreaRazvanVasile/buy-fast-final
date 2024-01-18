@@ -7,20 +7,31 @@ import { useSelector } from 'react-redux'
 import { selectorIsLoading } from '../../store/categories/categories.selector'
 import Spinner from '../spinner/spinner.componet'
 import { selectorError } from '../../store/categories/categories.selector'
+import ErorrMessage from '../error-message/error-message.component'
+
 const CategoriesComponent=()=>{
 
   const isLoading=useSelector(selectorIsLoading)
   const categories=useSelector(selectorCategoires)
+  const errorData=useSelector(selectorError)
 
    const categoriesEntries=Object.entries(categories)
 
-
+   
    
       if(isLoading){
         return (
           <Fragment>
             <Spinner/>
           </Fragment>
+        )
+      }
+      else if(errorData!==null){
+        return (
+          <>
+          <ErorrMessage message={errorData.message}></ErorrMessage>
+         
+          </>
         )
       }
       else{

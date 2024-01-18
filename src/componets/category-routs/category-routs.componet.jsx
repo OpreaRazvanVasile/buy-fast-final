@@ -5,18 +5,21 @@ import { useParams } from "react-router"
 import { useEffect,useState } from "react"
 
 import { useSelector } from 'react-redux'
-import { selectorCategoires } from '../../store/categories/categories.selector.js'
+import { selectorCategoires, selectorError } from '../../store/categories/categories.selector.js'
 import ProductItem from "../product-item/product-item.component"
 import { hasPointerEvents } from '@testing-library/user-event/dist/utils'
 import { selectorIsLoading } from '../../store/categories/categories.selector.js'
 
 import Spinner from '../spinner/spinner.componet.jsx'
+import ErorrMessage from '../error-message/error-message.component.jsx'
+
 
 const CategoryRouts=()=>{
     
     const {category}=useParams()
     const categories=useSelector(selectorCategoires)
     const isLoading=useSelector(selectorIsLoading)
+    const errorData=useSelector(selectorError);
     //{hats:[],snekers:[]}
 
 
@@ -46,12 +49,20 @@ const CategoryRouts=()=>{
 
     },[category,categories])
     
+    
+
     if(isLoading){
         return (
         <>
             <Spinner/>
         </>
     )
+    }
+
+    else if(errorData!==null){
+        return (
+            <ErorrMessage message={errorData.message}></ErorrMessage>
+        )
     }
     else {
         return (
