@@ -1,6 +1,6 @@
 import { createAction } from "../../utils/fierbase/create.action";
 import { CATEGORIES_TYPES } from "./categories.types";
-import { getDocumentFormDB } from "../../utils/fierbase/fierbase.utils";
+
 
  export const fetchCategoriesStart=()=>{
   
@@ -13,20 +13,20 @@ import { getDocumentFormDB } from "../../utils/fierbase/fierbase.utils";
 export const fetchCategoiresSuccess=(categoriesArray)=>
 createAction(CATEGORIES_TYPES.FETCH_CATEGORIES_SUCCESS,categoriesArray)
 
-export const fetchCategoiresAsync=async(dispatch)=>{
+// export const fetchCategoiresAsync=async(dispatch)=>{
 
-  dispatch(fetchCategoriesStart())
-  try{
-    const categoriesArray=await getDocumentFormDB('categories')
+//   dispatch(fetchCategoriesStart())
+//   try{
+//     const categoriesArray=await getDocumentFormDB('categories')
     
-   dispatch(fetchCategoiresSuccess(categoriesArray)) 
+//    dispatch(fetchCategoiresSuccess(categoriesArray)) 
 
-  }
-  catch(error){
+//   }
+//   catch(error){
   
-  return dispatch(fetchCategoriesFaild(error))
+//   return dispatch(fetchCategoriesFaild(error))
    
-  }
-}
+//   }
+// }
 
 
