@@ -9,6 +9,7 @@ export function *fetchCategoiresAsync(){
     try{
         
         const categoriesArray=yield call(getDocumentFormDB,'categories')
+       
         yield put(fetchCategoiresSuccess(categoriesArray))
         
     }

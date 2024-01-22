@@ -14,8 +14,7 @@ const CategoriesComponent=()=>{
   const isLoading=useSelector(selectorIsLoading)
   const categories=useSelector(selectorCategoires)
   const errorData=useSelector(selectorError)
-
-   const categoriesEntries=Object.entries(categories)
+  const categoriesEntries=Object.entries(categories)
 
    
    
@@ -29,7 +28,7 @@ const CategoriesComponent=()=>{
       else if(errorData!==null){
         return (
           <>
-          <ErorrMessage message={errorData.message}></ErorrMessage>
+          <ErorrMessage message={errorData}></ErorrMessage>
          
           </>
         )

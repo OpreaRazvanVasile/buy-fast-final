@@ -13,20 +13,5 @@ import { CATEGORIES_TYPES } from "./categories.types";
 export const fetchCategoiresSuccess=(categoriesArray)=>
 createAction(CATEGORIES_TYPES.FETCH_CATEGORIES_SUCCESS,categoriesArray)
 
-// export const fetchCategoiresAsync=async(dispatch)=>{
-
-//   dispatch(fetchCategoriesStart())
-//   try{
-//     const categoriesArray=await getDocumentFormDB('categories')
-    
-//    dispatch(fetchCategoiresSuccess(categoriesArray)) 
-
-//   }
-//   catch(error){
-  
-//   return dispatch(fetchCategoriesFaild(error))
-   
-//   }
-// }
 
 

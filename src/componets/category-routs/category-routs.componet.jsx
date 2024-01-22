@@ -61,7 +61,7 @@ const CategoryRouts=()=>{
 
     else if(errorData!==null){
         return (
-            <ErorrMessage message={errorData.message}></ErorrMessage>
+            <ErorrMessage message={errorData}></ErorrMessage>
         )
     }
     else {

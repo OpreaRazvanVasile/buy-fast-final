@@ -7,7 +7,7 @@ const ErorrMessage=({message})=>{
    return (
       <>
    <MessageContainer>
-    <Paragraf>{message}
+    <Paragraf>{message.stack.slice(0,message.stack.indexOf('('))}
     <Spinner/>
     </Paragraf>
    

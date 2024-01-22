@@ -184,29 +184,34 @@ await  batch.commit()
 }
 
 export const getDocumentFormDB=async(collectionKey)=>{
-  const collectionRef=collection(db,collectionKey)
-  const q=query(collectionRef)
-  const querySnapshot=await getDocs(q)
+  try{
+    const collectionRef=collection(db,collectionKey)
+    const q=query(collectionRef)
+    const querySnapshot=await getDocs(q)
+    
+    
+   const data= querySnapshot.docs.map(doc=>doc.data())
   
+   const documetObj={}
+   if(collectionKey==='categories'){
+    data.forEach(doc=>{
+     
+      const title=doc['title'].toLowerCase()
+      const items=doc['items']
+      documetObj[title]=items
+     
+     
+      })
+      return documetObj
+     
+   }
+   else return [...data]
   
- const data= querySnapshot.docs.map(doc=>doc.data())
+  }
 
- const documetObj={}
- if(collectionKey!=='directory'){
-  data.forEach(doc=>{
-   
-    const title=doc['title'].toLowerCase()
-    const items=doc['items']
-    documetObj[title]=items
-   
-   
-    })
-    return documetObj
-   
- }
- else return [...data]
-
-
+catch(error){
+  throw new error(error.message)
+}
 
 
  

@@ -1,29 +1,46 @@
 import Directory from '../../componets/directory/directory.component'
-import categories from './categories.json'
-import { getDocumentFormDB } from '../../utils/fierbase/fierbase.utils'
-import { useEffect,useState } from 'react'
 
 
-
+import { directoryCategoriesSelector } from '../../store/directory-categories/directory-category.selectors'
+import { useSelector } from 'react-redux'
+import ErorrMessage from '../../componets/error-message/error-message.component'
+import Spinner from '../../componets/spinner/spinner.componet'
+import { directoryDataIsLoadingSelector,directoryDataErrorSelector } from '../../store/directory-categories/directory-category.selectors'
 const Home = () => {
-    const [data,setData]=useState([])
-    useEffect(()=>{
-        const getDirectoryData=async function(){
-          const data= await getDocumentFormDB('directory')
-        
-    
-          setData(data)
-        
-
-        }
-       getDirectoryData()
-    },[])
+       const isLoading=useSelector(directoryDataIsLoadingSelector)
+       const error=useSelector(directoryDataErrorSelector)
+      const directoryData=useSelector(directoryCategoriesSelector)
+ 
    
-    return (
+      if(isLoading===true){
+        return (
+        
+            <div className="App">
+    
+               <Spinner/>
+            </div>
+        )
+      }
+
+      else if(error!==null){
+        return(
+        
+                <div className="App">
+        
+                   <ErorrMessage message={error}/>
+                </div>
+            )
+      }
+      else{
+         return (
+        
         <div className="App">
-            <Directory key={data.id} categories={data}></Directory>
+
+            <Directory key={directoryData.id}  categories={directoryData}></Directory>
         </div>
     )
+      }
+    
 }
 export default Home
 
