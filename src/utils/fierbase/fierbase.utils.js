@@ -39,19 +39,23 @@ const firebaseConfig = {
 
   const provaider=new GoogleAuthProvider()
 
+  export const db=getFirestore()//fierstore DataBase
   provaider.setCustomParameters({
     prompt:"select_account"
   })
 
   
   export   const auth=getAuth()
-  export  const singInWithGoogle=async function(){
+  export  const signInWithGoogle=async function(){
    
-   try{return await signInWithPopup(auth,provaider)
+   try{
+    return await signInWithPopup(auth,provaider)
+    //{user,tokenResponse,...}
+    //{user:(user authentificated)}
    }
 
   catch(err){
-    console.error(err.message)
+    alert(err.message)
   }
  
 }
@@ -60,33 +64,55 @@ export const redirectSingIn=async function(){
     return await signInWithRedirect(auth,provaider)
 }
 
-export const db=getFirestore()//fierstore DataBase
 
-export const createUsersDocument=async function(userAuth){
+export const createUsersDocument=async function(userAuth,aditionalData){
     const docRef=doc(db,'users',userAuth.uid)
-  
+    console.log(docRef)
+    
+    console.log(auth)
+    
     const docSnapShot=await getDoc(docRef)
-   
-
+    console.log(docSnapShot.exists())
+  
     try{
     if(!docSnapShot.exists()){
-    
+      
+
         const{displayName,email}=userAuth
         const setdate=new Date()
-        const doc=await setDoc(docRef,{displayName,email,date:setdate})
-    
-
+        const doc=!aditionalData?await setDoc(docRef,{displayName,email,date:setdate}):
+        await setDoc(docRef,{displayName:aditionalData,email:email,date:setdate})
+         return doc 
+  
     }
+    
 }
  catch(err){
-    console.error(err.message)
+    alert(err.message)
 }
 
-
+return docSnapShot
 
 
 }
 
+// getAuth()
+//   .createUser({
+//     email: 'user@example.com',
+//     emailVerified: false,
+//     phoneNumber: '+11234567890',
+//     password: 'secretPassword',
+//     displayName: 'John Doe',
+//     photoURL: 'http://www.example.com/12345678/photo.png',
+//     disabled: false,
+//   })
+//   .then((userRecord) => {
+//     // See the UserRecord reference doc for the contents of userRecord.
+//     console.log('Successfully created new user:', userRecord.uid);
+//   })
+//   .catch((error) => {
+//     console.log('Error creating new user:', error);
+//   });
 export const createAuthWithEmail=async(email,password)=>{
   if(!email||!password)return
 
@@ -115,10 +141,10 @@ catch(err){
 }
 
 export const singInWithEmail=async(email,password)=>{
-  if(!email||!password)return
+
 
 try{
-
+  if(!email||!password)return
   return  await signInWithEmailAndPassword(auth,email,password)
 }
 
@@ -134,6 +160,7 @@ catch(err){
  else {
   alert(err.message)
  }
+
  
 }
   
@@ -157,9 +184,38 @@ export const signOutUser=async()=>{
 
 export const authStateChangedListener=(callback)=>{
 if(!callback)return
+
 return onAuthStateChanged(auth,callback)
 }
 
+export const getCurrentUser=()=>{
+
+
+  return new Promise((resolve,reject)=>{
+    const unsubsribe=onAuthStateChanged(auth,
+      (userAuth)=>{
+        unsubsribe()
+        resolve(userAuth)
+      },
+      reject
+      )
+    
+  })
+}
+
+
+export const addOrdersColectionToDb=async(collectionKey,objectToAdd)=>{
+  const colectionRef=collection(db,collectionKey)
+  const batch=writeBatch(db)
+  const id=objectToAdd.uid
+  const docRef=doc(colectionRef,id)
+  batch.set(docRef,objectToAdd)
+
+  await batch.commit()
+  
+
+
+}
 
 export const addCollectionToDB=async(collectionKey,objectToAdd)=>{
   const collectionRef=collection(db,collectionKey)
@@ -182,6 +238,7 @@ export const addCollectionToDB=async(collectionKey,objectToAdd)=>{
 await  batch.commit() 
 
 }
+
 
 export const getDocumentFormDB=async(collectionKey)=>{
   try{

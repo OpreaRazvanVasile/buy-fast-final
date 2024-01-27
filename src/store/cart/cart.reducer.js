@@ -11,7 +11,7 @@ const INITIAL_CART_STATE={
  }
 
 
- export const cartReducer=(state=INITIAL_CART_STATE,action)=>{
+ export const cartReducer=(state=INITIAL_CART_STATE,action={})=>{
     const {type,payload}=action
     
     switch(type){
@@ -36,6 +36,11 @@ const INITIAL_CART_STATE={
             ...state,
             isCartOpen:payload
          }   
+       case CART_ITEM_TYPES.SET_CLEAR_ALL:
+         return{
+            ...state,
+            cartItems:[]
+         }  
        default:return state   
     }
     }

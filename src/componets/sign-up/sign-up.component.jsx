@@ -6,8 +6,9 @@ import{SignUpCotainer} from'./sign-up.styles.jsx'
 import { createUsersDocument, createAuthWithEmail,}
      from "../../utils/fierbase/fierbase.utils"
 
-    
-
+   
+import { useDispatch } from "react-redux"
+import { signUpStart } from "../../store/user/user.actions.js"
 
 
 const defaultInputData={
@@ -19,6 +20,7 @@ const defaultInputData={
 
 
 const SignUp=()=>{
+    const dispatch=useDispatch()
     const[formInputData,setFormInputData]=useState(defaultInputData)
 
     const {displayName,email,password,confirmPassword}=formInputData
@@ -37,17 +39,12 @@ const SignUp=()=>{
     const submitHandler=async(e)=>{
     e.preventDefault()
     if(password!==confirmPassword)return alert(`Password and Confirm Password don't match'`)
-    
-    const response=await createAuthWithEmail(email,password)
    
-    if(response){
+    dispatch(signUpStart(email,password,displayName))
     
-    if(response.user.displayName===null) response.user.displayName=displayName
     setFormInputData(defaultInputData)
-    return await createUsersDocument(response.user)
-    
-    
-    }
+  
+
     
     }
     return (

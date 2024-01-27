@@ -5,13 +5,14 @@ import { cartItemsSelector,cartTotalPriceSelector,cartTotalQunatitySelector } fr
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { setCartTotal,setTotalQuantity } from '../../store/cart/cart.actions.js'
-
+import Button from '../../componets/button/button.component.jsx'
+import { useNavigate } from 'react-router'
 const Checkout=()=>{
      const dispatch=useDispatch()
      const cartItems=useSelector(cartItemsSelector)
      const totalPrice=useSelector(cartTotalPriceSelector)
      const totalQuantity=useSelector(cartTotalQunatitySelector)
-
+     const nav=useNavigate()
      useEffect(()=>{
 
          dispatch(setCartTotal(totalPrice))
@@ -62,7 +63,7 @@ const Checkout=()=>{
          
          </SpanTotal>
          
-         
+         {totalPrice>0||totalPrice?<Button typebutton='google' children='Finish Order' onClick={()=>nav('/checkout/order')}></Button>:''}
         
         
         </CheckoutContainer>

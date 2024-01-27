@@ -15,3 +15,4 @@ createAction(CATEGORIES_TYPES.FETCH_CATEGORIES_SUCCESS,categoriesArray)
 
 
 
+

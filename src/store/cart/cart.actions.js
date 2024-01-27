@@ -102,4 +102,5 @@ export  const setRemoveItemOnCLick=(cartItems,product)=>{
 
 
  }
+  export const clearAllCartItems=()=>createAction(CART_ITEM_TYPES.SET_CLEAR_ALL)
  

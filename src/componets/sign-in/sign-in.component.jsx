@@ -1,21 +1,18 @@
 
- import { useEffect,useState,useContext} from "react"
-//   import { UserContext } from "../../contexts/user-context/user.context"
+ import {useEffect, useState} from "react"
+
 
 
 import InputForm from "../input-form/input-form.component"
  import Button from "../button/button.component"
-
-import { createUsersDocument,auth, singInWithGoogle,redirectSingIn,singInWithEmail}
-    from "../../utils/fierbase/fierbase.utils"
-import { getRedirectResult } from "firebase/auth"    
+  
 import {SignInContainer,BtnContainer}from'./sign-in.styles.jsx'
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+
+
+import { googleSignInStart ,googleRedirectSignInStart,signInWithEmailStart} from "../../store/user/user.actions.js"
+import { useNavigate } from "react-router"
 import { selectCurrentUser } from "../../store/user/user.selector.js"
-
-
-
-
 
 
 
@@ -28,82 +25,29 @@ const defaultInputData={
 
 const SignIn=()=>{
     const[formInputData,setFormInputData]=useState(defaultInputData)
-
-     const currnetUser=useSelector(selectCurrentUser)
-    
-    
-    const {email,password}=formInputData
-        useEffect(()=>{
-        const redirectResponse=async function(){
-            
-    
-            const response= await getRedirectResult(auth)
-            if(response){
-                const createDocumentDB=await createUsersDocument(response.user)  
-                
-            }
-        
-        } 
-        redirectResponse()
-    
-    
-    },[])
-        
-    const logWithGoogle=async function(){
-        if (currnetUser) return signOutAlert(); 
-
-        const response=await singInWithGoogle()
-        const createDocumentDB=await createUsersDocument(response.user)
-         return createDocumentDB
-        
-      }
-
-         
-      
-      const changeHandler=function(event){
-        event.preventDefault()
-       const{name,value}=event.target
-       setFormInputData(()=>{return{...formInputData,[name]:value}})
-      
-
-    
-      
-       }
-    
-    
-    const submitHandler=async(e)=>{
-    e.preventDefault()
-        if(currnetUser) return signOutAlert() ;
-        const {user}=await  singInWithEmail(email,password)
-     
-    
-         
-        
-        
-        setFormInputData(defaultInputData)
-        
-        
-       
-    
-}
- 
- const signOutAlert=()=>alert(`you must log out of the  ${currnetUser.email.slice(0,6)} account`.toLocaleUpperCase())
+    const dispatch=useDispatch()
+   const {email,password}=formInputData
 
  
-  const signInWithRedirect=async()=>{
-       if(!currnetUser) {
-           await redirectSingIn();
-
-       } 
-       else {
+    const logWithGoogle=()=>dispatch(googleSignInStart())
+    const logWithGoogleRedirect=()=>dispatch(googleRedirectSignInStart())
         
-        signOutAlert()
-       }
+    const submitHandler=(e)=>{
+      e.preventDefault()
+      dispatch(signInWithEmailStart(email,password))
+     setFormInputData(defaultInputData)
+     }
+      
+    const changeHandler=function(event){
+     event.preventDefault()
+     const{name,value}=event.target
+     setFormInputData(()=>{return{...formInputData,[name]:value}})
+        
+    }
     
-
     
+  
 
-  }
     
         return (
         <SignInContainer>
@@ -117,7 +61,7 @@ const SignIn=()=>{
         <BtnContainer>
         <Button type='submit' children='Sign In'/>
         <Button type='button' typebutton='google'  onClick={logWithGoogle} children='Google'/>
-        <Button type='button' typebutton='redirect' children='Redirect' onClick={signInWithRedirect}/>
+        <Button type='button' typebutton='redirect' children='Redirect' onClick={logWithGoogleRedirect}/>
         </BtnContainer>
         </form>
       
