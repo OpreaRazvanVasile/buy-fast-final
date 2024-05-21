@@ -2,8 +2,6 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router"
 
 import {ItemBody,ItemContainer,BackgroundImage} from'./directory-item.styles.jsx'
-import { UseSelector, useSelector } from "react-redux"
-import { directoryDataIsLoadingSelector } from "../../store/directory-categories/directory-category.selectors.js"
 
 
 const DirectoryItem = ({ category }) => {

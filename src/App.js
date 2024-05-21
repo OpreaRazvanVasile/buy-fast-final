@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.scss';
 import { Routes, Route } from 'react-router';
 import Home from './routs/home/home.component';
@@ -7,7 +7,7 @@ import Auth from './componets/authentification/auth.component';
 import Shop from './routs/shop/shop.component';
 import Checkout from './routs/checkout/checkout.component';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { fetchDirectoryCategoriesStart } from './store/directory-categories/directory-categories.actions';
 
 import { chechUserSession } from './store/user/user.actions';
