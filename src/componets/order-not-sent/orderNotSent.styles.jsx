@@ -15,6 +15,9 @@ width:140%;
 form{
    border:.1rem solid hsla(0, 0%, 63%, .25);
    margin-left:-20%;
+   padding:40px;
+   margin-top:40px;
+   border-radius:1%;
    
 }
 button{
