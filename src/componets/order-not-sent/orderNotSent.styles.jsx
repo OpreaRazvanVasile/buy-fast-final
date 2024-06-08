@@ -15,11 +15,17 @@ width:140%;
 form{
    border:.1rem solid hsla(0, 0%, 63%, .25);
    margin-left:-20%;
-   padding:40px;
+   padding:10%;
    margin-top:40px;
-   border-radius:1%;
+   border-radius:2%;
+   input{
+    margin-top:-10px;
+    
+} 
+
    
 }
+
 button{
   margin-top:-1em;
   border-color:hsla(0, 0%, 15%, .25)

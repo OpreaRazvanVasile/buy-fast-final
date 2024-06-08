@@ -238,6 +238,7 @@ return (
             <h2>Credit Card Payment: </h2>
        <CardElement/>
        <br/>
+      
       <Button typebutton='inverted' type='submit'>Pay Now</Button>
       
       </>
