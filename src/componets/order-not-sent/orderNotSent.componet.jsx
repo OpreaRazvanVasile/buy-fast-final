@@ -20,7 +20,7 @@ import { uid as id } from "../../utils/fierbase/uid.generator"
 
 import { CardElement,useStripe,useElements} from "@stripe/react-stripe-js"
  
-import { FormCotainer } from "./orderNotSent.styles"
+import { FormCotainer ,ContainerOrderNotSent} from "./orderNotSent.styles"
 const OrderNotSent=()=>{
    
 const dispatch=useDispatch()
@@ -203,16 +203,13 @@ const paymentHandlerHelper=(inputDataType)=>{
 return (
 
 
-    <>
+    <ContainerOrderNotSent>
     {totalPriceCart===0?'':
     <>
     <h2>Finish Order</h2>
     <FormCotainer onSubmit={submitHandler}>
     <br />
-   <SelectorForm label='Client Type:' options={clientOptions}
-    onChange={selectType} required></SelectorForm>
- 
- 
+  
  <InputForm label='First Name' type='text'  name="firstName" onChange={onChangeHandler} required value={clientType==='individual'||!clientType? firstName:inputDataCompany.firstName}>
 </InputForm>
  <InputForm label='Last Name' type='text'  name="lastName" onChange={onChangeHandler} required value={clientType==='individual'||!clientType? lastName:inputDataCompany.lastName}></InputForm>
@@ -221,9 +218,11 @@ return (
  <InputForm label='Country' type='text'  name="country" onChange={onChangeHandler} required value={clientType==='individual'||!clientType? country:inputDataCompany.country}></InputForm>
  <InputForm label='County' type='text'  name="county" onChange={onChangeHandler} required value={clientType==='individual'||!clientType? county:inputDataCompany.county}></InputForm>
  <InputForm label='City' type='text'  name="city" onChange={onChangeHandler} required value={clientType==='individual'||!clientType? city:inputDataCompany.city}></InputForm>
+
  <InputForm label='Zip Code' type='text'  name="zip" onChange={onChangeHandler} value={clientType==='individual'||!clientType? zip:inputDataCompany.zip}></InputForm>
  <InputForm label='Delivery Details' type='text'  name="details" required onChange={onChangeHandler} value={clientType==='individual'||!clientType? details:inputDataCompany.details}></InputForm>
-
+ <SelectorForm label='Client Type:' options={clientOptions}
+    onChange={selectType} required></SelectorForm>
  {clientType==='legalEntity'?<>
  <InputForm label='Company Name' type='text'  name="companyName" required onChange={onChangeHandler} value={inputDataCompany.companyName}></InputForm>
  <InputForm label='CUI' type='text'  name="cui" onChange={onChangeHandler} required value={inputDataCompany.cui}></InputForm>
@@ -250,7 +249,7 @@ return (
 </>
     }
       
-    </>
+    </ContainerOrderNotSent>
 
 
 )

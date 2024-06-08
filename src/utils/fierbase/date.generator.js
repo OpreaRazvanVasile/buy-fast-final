@@ -11,7 +11,8 @@ export const generateDate=()=>{
    
       
   //  }
-   return date;
+  // Intl.DateTimeFormat('en-US',options).format(date);
+   return date
    
    
 }

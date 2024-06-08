@@ -6,7 +6,7 @@ import { orderSagas } from './order/order.saga'
 
 export function*rootSaga(){
   yield  all([call(categoriesSaga),
-    call(directoryCategoriesSaga),
+    call(directoryCategoriesSaga,),
     call(userSagas),
     call(orderSagas)
   ]
