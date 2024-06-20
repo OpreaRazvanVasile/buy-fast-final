@@ -67,7 +67,7 @@ const CategoryRouts=()=>{
     else {
         return (
             <>
-            <CategoriesTitle>{products?category.toLocaleUpperCase():''}</CategoriesTitle>
+            <CategoriesTitle>{category.toLocaleUpperCase()}</CategoriesTitle>
             {/* {//HATS} */}
             <br></br>
         <CategoriesRouts>
