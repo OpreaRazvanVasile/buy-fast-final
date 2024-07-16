@@ -251,11 +251,20 @@ export const getDocumentFormDB=async(collectionKey)=>{
   
    const documetObj={}
    if(collectionKey==='categories'){
-    data.forEach(doc=>{
+    const newData=data.map(item=>{
+      return {...item,id:Number(item.id)}
+    }).sort((a,b)=>a.id-b.id)
+
+    console.log(newData)
+    newData.forEach(doc=>{
+      console.log(doc)
      
       const title=doc['title'].toLowerCase()
       const items=doc['items']
+
       documetObj[title]=items
+      
+     
      
      
       })

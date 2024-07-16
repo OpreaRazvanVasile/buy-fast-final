@@ -5,7 +5,7 @@ import ProductItem from "../product-item/product-item.component"
 import {CategoryPreviewConatiner,TitleLink,Preview} from'./category-preview.styles.jsx'
 
 const CategoryPreview=({title,value})=>{
-    
+    console.log(value)
 
 
     return (
