@@ -26,8 +26,7 @@ export function*signInEmail(action){
  
        const {user}=yield call(singInWithEmail,email,password)
        yield call(getDocSnapShotFromAuth,user)
- 
-      // console.log(user)
+
 
      }
      catch(error){
@@ -93,7 +92,7 @@ export function*signInRedirect(){
 
      yield call(redirectSingIn);
     const {user}=yield call(getRedirectResult); 
-    console.log(user)
+  
     yield call(getDocSnapShotFromAuth,user)
     
   

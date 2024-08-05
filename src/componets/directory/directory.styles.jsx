@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { breakpointMobile } from "../authentification/auth.styles";
+import { breakpointMobile} from "../authentification/auth.styles";
 
 
 export const DirectoryContainer=styled.div`
@@ -10,13 +10,15 @@ flex-wrap: wrap;
 justify-content: space-between;
 margin-top:-7px ;
 
+
 @media screen and (max-width:${breakpointMobile}) {
     display:grid ;
     grid-template-columns:repeat(1,1fr) ;
     @media screen and (width:540px) {
+       display:grid ;
+       grid-template-columns:repeat(1,1fr) ;
        width: 110%;
        margin-left:-1rem ;
-       display: flex;
        flex-wrap: wrap;
        justify-content: space-between;
     }

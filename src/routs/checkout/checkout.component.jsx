@@ -1,4 +1,4 @@
-import {CheckoutContainer,CheckoutHeader,HeaderBlock,SpanTotal,OrderBtnContainer}from'./checkout.styles.jsx'
+import {CheckoutContainer,CheckoutHeader,HeaderBlock,SpanTotal}from'./checkout.styles.jsx'
 
 import CheckoutItem from '../../componets/chekout-item/checkout-item.component'
 import { cartItemsSelector,cartTotalPriceSelector,cartTotalQunatitySelector } from '../../store/cart/cart.selector.js'

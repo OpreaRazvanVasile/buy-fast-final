@@ -10,6 +10,9 @@ width: 100%;
 display: flex;
 justify-content: space-between;
 margin-bottom: 25px;
+@media screen and (width:344px) {
+        width:103% ;
+         } 
 
 @media screen and (width:360px) {
         width:100% ;

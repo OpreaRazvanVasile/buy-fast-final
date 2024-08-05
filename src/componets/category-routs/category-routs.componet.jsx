@@ -20,32 +20,17 @@ const CategoryRouts=()=>{
     const categories=useSelector(selectorCategoires)
     const isLoading=useSelector(selectorIsLoading)
     const errorData=useSelector(selectorError);
-    //{hats:[],snekers:[]}
 
-
-    //shop/hats->category title 
     const [products,setProducts]=useState([])
-    //[]
-   
-    /*
-     []
-     shop/heats
-     [heatsArray]
 
-    []
-     shop/mens
-     [mensArray]
-
-    */
-
-   
+  
 
     useEffect(()=>{
-
+        
+    
       
     setProducts(categories[category]) 
-    //categories['hats']
-    //[...hatsArray]  
+   
 
     },[category,categories])
     
@@ -68,11 +53,11 @@ const CategoryRouts=()=>{
         return (
             <>
             <CategoriesTitle>{category.toLocaleUpperCase()}</CategoriesTitle>
-            {/* {//HATS} */}
+           
             <br></br>
         <CategoriesRouts>
            {
-             products&&products.map(product=>
+             products&&products.sort((a,b)=>a.id-b.id).map(product=>
                 
             <ProductItem key={product.id} product={product}></ProductItem>)
            }  

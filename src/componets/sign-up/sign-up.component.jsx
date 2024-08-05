@@ -3,8 +3,7 @@ import { useState,useContext } from "react"
 import InputForm from "../input-form/input-form.component"
 import Button from "../button/button.component"
 import{SignUpCotainer} from'./sign-up.styles.jsx'
-import { createUsersDocument, createAuthWithEmail,}
-     from "../../utils/fierbase/fierbase.utils"
+
 
    
 import { useDispatch } from "react-redux"

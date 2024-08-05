@@ -68,7 +68,7 @@ const elemenets=useElements()
 
 const{firstName,lastName,email,phone,country, county,city,zip,details}=inputDataPerson
 
-console.log(inputDataPerson,inputDataCompany)
+
 
 const selectType=(event)=>{
 const value=event.value

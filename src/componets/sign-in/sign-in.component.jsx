@@ -7,12 +7,10 @@ import InputForm from "../input-form/input-form.component"
  import Button from "../button/button.component"
   
 import {SignInContainer,BtnContainer}from'./sign-in.styles.jsx'
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 
 
 import { googleSignInStart ,googleRedirectSignInStart,signInWithEmailStart} from "../../store/user/user.actions.js"
-import { useNavigate } from "react-router"
-import { selectCurrentUser } from "../../store/user/user.selector.js"
 
 
 

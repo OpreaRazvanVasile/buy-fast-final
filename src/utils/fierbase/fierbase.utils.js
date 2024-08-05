@@ -67,12 +67,10 @@ export const redirectSingIn=async function(){
 
 export const createUsersDocument=async function(userAuth,aditionalData){
     const docRef=doc(db,'users',userAuth.uid)
-    console.log(docRef)
-    
-    console.log(auth)
+   
     
     const docSnapShot=await getDoc(docRef)
-    console.log(docSnapShot.exists())
+    
   
     try{
     if(!docSnapShot.exists()){
@@ -108,10 +106,10 @@ return docSnapShot
 //   })
 //   .then((userRecord) => {
 //     // See the UserRecord reference doc for the contents of userRecord.
-//     console.log('Successfully created new user:', userRecord.uid);
+//     ('Successfully created new user:', userRecord.uid);
 //   })
 //   .catch((error) => {
-//     console.log('Error creating new user:', error);
+//     ('Error creating new user:', error);
 //   });
 export const createAuthWithEmail=async(email,password)=>{
   if(!email||!password)return
@@ -255,9 +253,9 @@ export const getDocumentFormDB=async(collectionKey)=>{
       return {...item,id:Number(item.id)}
     }).sort((a,b)=>a.id-b.id)
 
-    console.log(newData)
+  
     newData.forEach(doc=>{
-      console.log(doc)
+   
      
       const title=doc['title'].toLowerCase()
       const items=doc['items']

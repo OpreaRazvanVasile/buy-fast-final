@@ -15,7 +15,7 @@ const CategoriesComponent=()=>{
   const categories=useSelector(selectorCategoires)
   const errorData=useSelector(selectorError)
   const categoriesEntries=Object.entries(categories)
-  console.log(categoriesEntries)
+
 
    
    

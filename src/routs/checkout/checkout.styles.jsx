@@ -3,11 +3,7 @@ import { BaseButton } from "../../componets/button/button.styles";
 const breakpointMobile='750px';
 const breakpointTablet='1024px';
 
-// export const OrderBtn=styled(BaseButton)`
-// margin:0 auto;
-// font-size:14px;
 
-// `
 
 export const CheckoutHeader=styled.div`
 width: 102%;
