@@ -1,0 +1,1 @@
+export const ADMIN_UID="zhGv5oevq8O4UWpuRilanrKpoUJ3"

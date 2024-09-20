@@ -1,15 +1,16 @@
 
-import { useState,useContext } from "react"
+import { useState,useContext, useEffect } from "react"
 import InputForm from "../input-form/input-form.component"
 import Button from "../button/button.component"
 import{SignUpCotainer} from'./sign-up.styles.jsx'
 
 
    
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { signUpStart } from "../../store/user/user.actions.js"
-
-
+import { selectCurrentUser } from "../../store/user/user.selector.js"
+import { ADMIN_UID } from "../../adminUid.js"
+import { useNavigate } from "react-router"
 const defaultInputData={
     displayName:'',
     email:'',
@@ -21,10 +22,13 @@ const defaultInputData={
 const SignUp=()=>{
     const dispatch=useDispatch()
     const[formInputData,setFormInputData]=useState(defaultInputData)
+    const currentUser=useSelector(selectCurrentUser)
+  
+  
 
     const {displayName,email,password,confirmPassword}=formInputData
 
-
+  
       const changeHandler=function(event){
         event.preventDefault()
        const{name,value}=event.target
@@ -40,9 +44,10 @@ const SignUp=()=>{
     if(password!==confirmPassword)return alert(`Password and Confirm Password don't match'`)
    
     dispatch(signUpStart(email,password,displayName))
-    
+   
     setFormInputData(defaultInputData)
-  
+   
+   
 
     
     }

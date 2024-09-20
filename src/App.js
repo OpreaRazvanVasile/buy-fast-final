@@ -7,15 +7,18 @@ import Auth from './componets/authentification/auth.component';
 import Shop from './routs/shop/shop.component';
 import Checkout from './routs/checkout/checkout.component';
 import { useEffect } from 'react';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { fetchDirectoryCategoriesStart } from './store/directory-categories/directory-categories.actions';
 
 import { chechUserSession } from './store/user/user.actions';
 import Order from './routs/order/order.componet';
+import { selectCurrentUser } from './store/user/user.selector';
+import { ADMIN_UID } from './adminUid';
 
 const App=()=> {
 
   const dispatch=useDispatch()
+  const currentUser=useSelector(selectCurrentUser)
 
   useEffect(()=>{
     dispatch(chechUserSession())          
@@ -27,11 +30,10 @@ const App=()=> {
       dispatch(fetchDirectoryCategoriesStart())
     },[])
 
-    
-
-
-
+   
+   
   return (
+   
     < Routes >
     
       <Route path='/' element={<Navigation />}>
@@ -44,5 +46,6 @@ const App=()=> {
     </Routes >
   )
 }
+
 
 export default App;

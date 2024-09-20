@@ -14,6 +14,7 @@ import {
 
 import { redirectSingIn } from "../../utils/fierbase/fierbase.utils";
 import { getRedirectResult } from "firebase/auth";
+import { ADMIN_UID } from "../../adminUid";
 
 
 
@@ -25,6 +26,7 @@ export function*signInEmail(action){
      const{payload:{email,password}} =action
  
        const {user}=yield call(singInWithEmail,email,password)
+       if(user.uid===ADMIN_UID) window.location.href = 'https://admin-fast-buy.netlify.app/';
        yield call(getDocSnapShotFromAuth,user)
 
 
