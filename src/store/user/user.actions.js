@@ -14,7 +14,6 @@ export const setCurrentUser=(user)=>{
 
    //SIGN IN METHODS
    export const googleSignInStart=()=>createAction(CURRENT_USER_TYPES.GOOGLE_SIGN_IN_POP_UP_START)
-   export const googleRedirectSignInStart=()=>createAction(CURRENT_USER_TYPES.GOOGLE_SIGN_IN_REDIRECT)
    export const signInWithEmailStart=(email,password)=>createAction(CURRENT_USER_TYPES.EMAIL_SIGN_IN_START,{email,password})
    
   //SIGN UP METHODS
@@ -26,4 +25,7 @@ export const setCurrentUser=(user)=>{
    //SIGN OUT 
    export const signOutStart=()=>createAction(CURRENT_USER_TYPES.SIGN_OUT_START)
    export const signOutSucces=()=>createAction(CURRENT_USER_TYPES.SIGN_OUT_SUCCES)
-   export const singOutFaild=(error)=>createAction(CURRENT_USER_TYPES.SIGN_OUT_FAILD,error)  
+   export const singOutFaild=(error)=>createAction(CURRENT_USER_TYPES.SIGN_OUT_FAILD,error) 
+   
+   //ADMIN AUTH
+   export const signInAdminSuccess=()=>createAction(CURRENT_USER_TYPES.ADMIN_AUTH_SUCCESS)

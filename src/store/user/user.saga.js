@@ -1,5 +1,7 @@
 import { takeLatest,put,call,all } from "redux-saga/effects";
-import { signInSucces,signInFaild,signUpSucces,signUpFaild,signOutSucces,singOutFaild}from "./user.actions";
+import { signInSucces,signInFaild,
+  signUpFaild,signOutSucces,singOutFaild,signInAdminSuccess}from "./user.actions";
+
 import { CURRENT_USER_TYPES } from "./user.types";
 import { 
    createAuthWithEmail,
@@ -12,8 +14,6 @@ import {
    from "../../utils/fierbase/fierbase.utils";
 
 
-import { redirectSingIn } from "../../utils/fierbase/fierbase.utils";
-import { getRedirectResult } from "firebase/auth";
 import { ADMIN_UID } from "../../adminUid";
 
 
@@ -22,11 +22,16 @@ export function*signInEmail(action){
      try{
       const currnetUser=yield call(getCurrentUser)
       if(currnetUser) return alert(`Log Out from current account`)
+     
     
      const{payload:{email,password}} =action
  
        const {user}=yield call(singInWithEmail,email,password)
-       if(user.uid===ADMIN_UID) window.location.href = 'https://admin-fast-buy.netlify.app/';
+  
+      if(user.uid===ADMIN_UID){
+        yield put(signInAdminSuccess())
+      }
+      
        yield call(getDocSnapShotFromAuth,user)
 
 
@@ -87,23 +92,7 @@ export function*signInGoogle(){
 
 
 }
-export function*signInRedirect(){
-  try{
-    const userFromAuth=yield call(getCurrentUser);
-    if(userFromAuth)return alert(`you must log out of the current account`.toLocaleUpperCase())
 
-     yield call(redirectSingIn);
-    const {user}=yield call(getRedirectResult); 
-  
-    yield call(getDocSnapShotFromAuth,user)
-    
-  
-    
-  }
- catch(error){
-  yield put(signInFaild())
- }
-}
 export function*isUserAuthenticated(){
   try{
     const userAuth=yield call(getCurrentUser)
@@ -162,9 +151,7 @@ export function*onSignOut(){
 export function*onlogInWithGoogle(){
   yield takeLatest(CURRENT_USER_TYPES.GOOGLE_SIGN_IN_POP_UP_START,signInGoogle)
 }
-export function*onlogInWithGoogleRedirect(){
-  yield takeLatest(CURRENT_USER_TYPES.GOOGLE_SIGN_IN_REDIRECT,signInRedirect)
-}
+
 
 export function*onChechUserSession(){
     yield takeLatest(CURRENT_USER_TYPES.CHECH_USER_SESSION,isUserAuthenticated)
@@ -176,11 +163,10 @@ export function*onSignInWithPasswordAndEmail(){
 export function*userSagas(){
   yield all([call(onChechUserSession),
     call(onlogInWithGoogle),
-    call(onlogInWithGoogleRedirect),
     call(onSignInWithPasswordAndEmail),
-  
     call(onSignUpStart),
-    call(onSignOut)
+    call(onSignOut),
+   
     
   ])
   

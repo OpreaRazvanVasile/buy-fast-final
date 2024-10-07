@@ -21,6 +21,7 @@ import { uid as id } from "../../utils/fierbase/uid.generator"
 import { CardElement,useStripe,useElements} from "@stripe/react-stripe-js"
  
 import { FormCotainer ,ContainerOrderNotSent} from "./orderNotSent.styles"
+
 const OrderNotSent=()=>{
    
 const dispatch=useDispatch()
@@ -117,6 +118,7 @@ const createOrder=()=>{
        dispatch(setOrderUID(`${firstName}.${uid()}`.toLocaleLowerCase()))
        dispatch(setOrderDate(generateDate()))
        dispatch(setOrderData(inputDataPerson))
+       
    
    }
    else{

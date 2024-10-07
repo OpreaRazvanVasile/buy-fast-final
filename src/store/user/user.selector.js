@@ -7,6 +7,10 @@ export const selectCurrentUser=createSelector(
     //state.user Momoizated
     (userSlice)=>userSlice.currnetUser
 )
+export const adminAuth=createSelector(
+    [selectCurrentUserReducer],
+    (userSlice)=>userSlice.adminAuth
+)
 
 
 

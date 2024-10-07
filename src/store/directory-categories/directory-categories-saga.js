@@ -13,6 +13,7 @@ import { fetchDirectoryCategoriesSuccess,fetchDirectoryCategoriesFaild } from '.
     try {
       const directoryData=yield call(getDocumentFormDB,'directory')
       const sortDirectoryData=directoryData.slice().sort((a,b)=>a.id-b.id)
+    
       yield put(fetchDirectoryCategoriesSuccess(sortDirectoryData))
 
     }

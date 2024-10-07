@@ -13,8 +13,10 @@ import { setClearTheOrderData } from "../../store/order/order.action"
 const OrderWasSent=()=>{
     const dispatch=useDispatch()
     const orderData=useSelector(orderDataReducer)
+    
  
     const data={...orderData}
+   
 
     useEffect(()=>{
     

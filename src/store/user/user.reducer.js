@@ -4,6 +4,7 @@ import { CURRENT_USER_TYPES } from "./user.types";
     currnetUser:null,
     isLoading:false,
     error:null,
+    adminAuth:false,
     
  }
  
@@ -28,18 +29,26 @@ import { CURRENT_USER_TYPES } from "./user.types";
          } 
          case CURRENT_USER_TYPES.SIGN_IN_FAILD:
          case CURRENT_USER_TYPES.SIGN_UP_FAILD:
-         case CURRENT_USER_TYPES.SIGN_OUT_FAILD:      
+         case CURRENT_USER_TYPES.SIGN_OUT_FAILD:
+        
             return{
                ...state,
                error:payload,
                isLoading:false,
             }
-           
+        case CURRENT_USER_TYPES.ADMIN_AUTH_SUCCESS:{
+         return{
+            ...state,
+            adminAuth:true,
+         }
+        }   
         case CURRENT_USER_TYPES.SIGN_OUT_SUCCES:
          return{
             ...state,
             currnetUser:null,
+            adminAuth:false,
          }
+         
             
        
       default:return state

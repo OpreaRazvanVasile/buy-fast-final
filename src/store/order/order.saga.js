@@ -6,6 +6,7 @@ import { orderToDbSucces,orderToDbFaild } from "./order.action";
 import { addOrdersColectionToDb } from "../../utils/fierbase/fierbase.utils";
 
 export function* orderSentToDb({payload}){
+
    
  try{
     yield call(addOrdersColectionToDb,'orders',payload)
